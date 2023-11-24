@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dnl7er0cu0a38"
+path="res://.godot/imported/feuillage.obj-66cebb05aad840b1dc15dd9c9c26734e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/feuillage.obj-66cebb05aad840b1dc15dd9c9c26734e.mesh"]
+
+source_file="res://feuillage.obj"
+dest_files=["res://.godot/imported/feuillage.obj-66cebb05aad840b1dc15dd9c9c26734e.mesh", "res://.godot/imported/feuillage.obj-66cebb05aad840b1dc15dd9c9c26734e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

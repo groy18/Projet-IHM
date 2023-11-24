@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://fryxi5l8nj2"
+path="res://.godot/imported/Lightsaber Clash-SoundBible.com-203518049.mp3-190a75dd09009261ebda69534e0327b9.mp3str"
+
+[deps]
+
+source_file="res://Sound effects/Lightsaber Clash-SoundBible.com-203518049.mp3"
+dest_files=["res://.godot/imported/Lightsaber Clash-SoundBible.com-203518049.mp3-190a75dd09009261ebda69534e0327b9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

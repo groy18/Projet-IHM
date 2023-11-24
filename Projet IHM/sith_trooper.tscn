@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkx70fpsr6i54"]
+
+[ext_resource type="Script" path="res://sith_trooper.gd" id="1_voare"]
+[ext_resource type="PackedScene" uid="uid://8djk2ci2m7bf" path="res://blaster.tscn" id="2_360fg"]
+[ext_resource type="AudioStream" uid="uid://cqdbd5hg0e86t" path="res://Sound effects/Laser Blaster.mp3" id="3_fgaau"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qnlns"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sa8fu"]
+albedo_color = Color(0.780392, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pmlwu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o75hp"]
+size = Vector3(1, 0.09, 10)
+
+[node name="Sith_trooper" type="CharacterBody3D" groups=["sith_troopers"]]
+collision_layer = 4
+collision_mask = 55
+axis_lock_linear_y = true
+axis_lock_angular_y = true
+up_direction = Vector3(0, -1, 0)
+slide_on_ceiling = false
+wall_min_slide_angle = 0.0
+floor_stop_on_slope = false
+floor_block_on_wall = false
+floor_max_angle = 0.0
+platform_floor_layers = 4294901761
+platform_wall_layers = 16
+script = ExtResource("1_voare")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_qnlns")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_sa8fu")
+mesh = SubResource("BoxMesh_pmlwu")
+
+[node name="Blaster" parent="." instance=ExtResource("2_360fg")]
+transform = Transform3D(-0.28823, 0, 0.957561, 0, 1, 0, -0.957561, 0, -0.28823, 0.249357, 0, -0.34827)
+
+[node name="Marker3D" type="Marker3D" parent="Blaster"]
+transform = Transform3D(-0.28823, 0, -0.957561, 0, 1, 0, 0.957561, 0, -0.28823, 0.235827, 0.0279331, 0.0496989)
+
+[node name="PlayerDetector" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.191931, -5.2204)
+shape = SubResource("BoxShape3D_o75hp")
+
+[node name="BlasterSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fgaau")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

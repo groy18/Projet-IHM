@@ -1,0 +1,144 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6dfw7khoj0rm"]
+
+[ext_resource type="Script" path="res://sith_kinghts.gd" id="1_orx0t"]
+[ext_resource type="PackedScene" uid="uid://dwfq6i7ewaado" path="res://saber2.tscn" id="2_neggy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qnlns"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sa8fu"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pmlwu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o75hp"]
+size = Vector3(1, 0.09, 2)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4aj3g"]
+height = 3.925
+radius = 0.174
+
+[sub_resource type="Animation" id="Animation_uv362"]
+resource_name = "saber_1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Saber1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.29673, 0, -0.283411), Vector3(0.29673, 0.107447, -0.283411), Vector3(0.29673, 0.107447, -0.283411), Vector3(0.297, 0, -0.283)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Saber2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.311428, 0, -0.295131), Vector3(-0.311428, 0, -0.295131), Vector3(-0.311428, 0, -0.295131), Vector3(-0.311428, 0, -0.295131)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Saber2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.23564, 0.462355, -4.25987e-08), Vector3(-1.23564, 0.462355, -4.25987e-08), Vector3(-0.49063, -1.23052, 1.8911), Vector3(-0.49063, -2.6257, 1.8911), Vector3(-1.23569, 0.462512, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Saber1:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.23564, -0.4149, -2.14684e-08), Vector3(-0.508273, -0.15236, -0.3196), Vector3(-0.754212, 2.75357, -2.05329), Vector3(-1.23569, -0.415388, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_huyct"]
+_data = {
+"saber_1": SubResource("Animation_uv362")
+}
+
+[node name="sith_knights" type="CharacterBody3D" groups=["sith_troopers"]]
+collision_layer = 4
+collision_mask = 55
+axis_lock_linear_y = true
+axis_lock_angular_y = true
+up_direction = Vector3(0, -1, 0)
+slide_on_ceiling = false
+wall_min_slide_angle = 0.0
+floor_stop_on_slope = false
+floor_block_on_wall = false
+floor_max_angle = 0.0
+platform_floor_layers = 4294901761
+platform_wall_layers = 16
+script = ExtResource("1_orx0t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_qnlns")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_sa8fu")
+mesh = SubResource("BoxMesh_pmlwu")
+
+[node name="PlayerDetector" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.191931, -1.25576)
+shape = SubResource("BoxShape3D_o75hp")
+
+[node name="Saber1" parent="." instance=ExtResource("2_neggy")]
+transform = Transform3D(0.0914959, 0.0381099, -0.0132713, 0, 0.0328867, 0.0944376, 0.0403545, -0.0864066, 0.03009, 0.297, 0, -0.283)
+
+[node name="Area_1" type="Area3D" parent="Saber1"]
+transform = Transform3D(1, -1.49012e-08, -2.23517e-08, 0, 1, 2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Saber1/Area_1"]
+transform = Transform3D(0.999998, -4.47035e-08, -1.49012e-08, -3.12924e-07, 0.999998, -7.7486e-07, 1.93715e-07, 6.25849e-07, 0.999998, -0.00150776, 3.06715, -0.0121059)
+shape = SubResource("CylinderShape3D_4aj3g")
+
+[node name="Saber2" parent="." instance=ExtResource("2_neggy")]
+transform = Transform3D(0.0894934, -0.0421378, 0.014674, 0, 0.0328866, 0.0944376, -0.0446198, -0.0845154, 0.0294314, -0.311428, 0, -0.295131)
+
+[node name="Area_2" type="Area3D" parent="Saber2"]
+transform = Transform3D(1, -1.49012e-08, -2.23517e-08, 0, 1, 2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Saber2/Area_2"]
+transform = Transform3D(0.999998, -4.47035e-08, -1.49012e-08, -3.12924e-07, 0.999998, -7.7486e-07, 1.93715e-07, 6.25849e-07, 0.999998, -0.00150776, 3.06715, -0.0121059)
+shape = SubResource("CylinderShape3D_4aj3g")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_huyct")
+}
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

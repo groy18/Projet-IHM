@@ -1,0 +1,190 @@
+[gd_scene load_steps=10 format=3 uid="uid://kaudeaaf35ey"]
+
+[ext_resource type="Script" path="res://introduction_scene_part_2.gd" id="1_occym"]
+[ext_resource type="PackedScene" uid="uid://lwlhc8bbtjt6" path="res://Map.tscn" id="2_j8xl3"]
+[ext_resource type="PackedScene" uid="uid://dmnlfrki2n0hu" path="res://ship2.tscn" id="3_gxwoc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vn06a"]
+sky_top_color = Color(0.211765, 0.0862745, 0.0235294, 1)
+sky_horizon_color = Color(0.661765, 0.633333, 0.606863, 1)
+sky_energy_multiplier = 6.0
+ground_bottom_color = Color(0.435294, 0.447059, 0.403922, 1)
+ground_horizon_color = Color(0.661765, 0.633333, 0.606863, 1)
+
+[sub_resource type="Sky" id="Sky_fd24l"]
+sky_material = SubResource("ProceduralSkyMaterial_vn06a")
+
+[sub_resource type="Environment" id="Environment_on67a"]
+background_mode = 2
+sky = SubResource("Sky_fd24l")
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
+volumetric_fog_detail_spread = 6.0
+
+[sub_resource type="Animation" id="Animation_o8obk"]
+resource_name = "ships_movment"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-3.35544, 9.60645, 81.4979), Vector3(-3.35544, 9.60645, 2.76251)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Static3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-12.6292, 10.9676, 81.6506), Vector3(-12.6292, 10.9676, -0.579262)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Static3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.06829, 0), Vector3(0, 3.06829, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.285, 4.351, 7.201), Vector3(-2.285, 4.351, 7.201)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.09621, 0), Vector3(0, 3.09621, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m10in"]
+resource_name = "ships_stops"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(15.526, 8.47162, 12.3081), Vector3(15.526, 1.12787, 12.3081)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Static3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.06829, 0), Vector3(0, 1.60396, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(11.428, 1.441, 10.543), Vector3(11.428, 1.441, 10.543)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -2.20435, 0), Vector3(0, -2.20435, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o0xhj"]
+_data = {
+"ships_movment": SubResource("Animation_o8obk"),
+"ships_stops": SubResource("Animation_m10in")
+}
+
+[node name="Introduction part 2" type="Node3D"]
+script = ExtResource("1_occym")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_on67a")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 26.199, 0)
+light_color = Color(0.592157, 0.337255, 0.227451, 1)
+shadow_enabled = true
+
+[node name="Menu" parent="." instance=ExtResource("2_j8xl3")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.998971, 0, 0.045363, 0, 1, 0, -0.045363, 0, -0.998971, -2.285, 4.351, 7.201)
+
+[node name="Static3D" parent="." instance=ExtResource("3_gxwoc")]
+transform = Transform3D(-0.997314, 0, 0.0732382, 0, 1, 0, -0.0732382, 0, -0.997314, -3.35544, 9.60645, 81.4979)
+
+[node name="Static3D2" parent="." instance=ExtResource("3_gxwoc")]
+transform = Transform3D(-0.997334, 0, 0.072977, 0, 1, 0, -0.072977, 0, -0.997334, -12.6292, 10.9676, 81.6506)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o0xhj")
+}
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]

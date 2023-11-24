@@ -1,0 +1,190 @@
+[gd_scene load_steps=10 format=3 uid="uid://dj1rgjo0ot8gu"]
+
+[ext_resource type="PackedScene" uid="uid://lwlhc8bbtjt6" path="res://Map.tscn" id="1_dyns5"]
+[ext_resource type="Script" path="res://Menu.gd" id="1_q22go"]
+[ext_resource type="PackedScene" uid="uid://bex41f6sr8f0x" path="res://saber.tscn" id="2_o456n"]
+[ext_resource type="AudioStream" uid="uid://c0cgx5cdu7tbg" path="res://Sound effects/Frost Mountain Aura.mp3" id="4_eyfj4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vn06a"]
+sky_top_color = Color(0.211765, 0.0862745, 0.0235294, 1)
+sky_horizon_color = Color(0.661765, 0.633333, 0.606863, 1)
+sky_energy_multiplier = 6.0
+ground_bottom_color = Color(0.435294, 0.447059, 0.403922, 1)
+ground_horizon_color = Color(0.661765, 0.633333, 0.606863, 1)
+
+[sub_resource type="Sky" id="Sky_fd24l"]
+sky_material = SubResource("ProceduralSkyMaterial_vn06a")
+
+[sub_resource type="Environment" id="Environment_on67a"]
+background_mode = 2
+sky = SubResource("Sky_fd24l")
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
+volumetric_fog_detail_spread = 6.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_d315d"]
+font_size = 40
+
+[sub_resource type="Theme" id="Theme_kmvlw"]
+
+[node name="Main Menu" type="Node3D"]
+script = ExtResource("1_q22go")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_on67a")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 26.199, 0)
+light_color = Color(0.592157, 0.337255, 0.227451, 1)
+shadow_enabled = true
+
+[node name="Menu" parent="." instance=ExtResource("1_dyns5")]
+
+[node name="Control" type="Control" parent="Menu"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Menu/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -946.0
+offset_top = -165.0
+offset_right = -198.0
+offset_bottom = -107.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Appuyer sur \"Espace\" pour commencer"
+label_settings = SubResource("LabelSettings_d315d")
+
+[node name="Buttons" type="Control" parent="Menu"]
+visible = false
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="Menu/Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -7.566
+anchor_right = -7.46
+offset_left = -424.36
+offset_top = -62.0
+offset_right = -83.6
+offset_bottom = 15.0
+theme = SubResource("Theme_kmvlw")
+theme_override_font_sizes/font_size = 50
+text = "Lancer le jeu"
+
+[node name="Commands" type="Button" parent="Menu/Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -7.566
+anchor_right = -7.46
+offset_left = -556.36
+offset_top = 37.0
+offset_right = 28.4
+offset_bottom = 114.0
+theme = SubResource("Theme_kmvlw")
+theme_override_font_sizes/font_size = 50
+text = "Afficher les commandes"
+
+[node name="Quit" type="Button" parent="Menu/Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -7.566
+anchor_right = -7.46
+offset_left = -365.36
+offset_top = 130.0
+offset_right = -173.6
+offset_bottom = 207.0
+theme = SubResource("Theme_kmvlw")
+theme_override_font_sizes/font_size = 50
+text = "Quitter"
+
+[node name="Retour" type="Button" parent="Menu/Buttons"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -7.566
+anchor_right = -7.46
+offset_left = -556.36
+offset_top = 261.0
+offset_right = 28.4
+offset_bottom = 338.0
+theme = SubResource("Theme_kmvlw")
+theme_override_font_sizes/font_size = 50
+text = "Retour"
+
+[node name="Commands" type="Control" parent="Menu"]
+visible = false
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Menu/Commands"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1097.5
+offset_top = -844.0
+offset_right = -46.5
+offset_bottom = -322.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "- Appuyez sur \"Clic gauche\" pour attaquer
+
+- Appuyez sur \"Clic droit\" pour passer en mode défensif
+
+- Appuyez sur \"F\" pour utiliser la Force
+
+- Appuyez sur \"A\" pour lancer votre sabre laser
+
+- Appuyez sur \"Espace\" pour sauter"
+label_settings = SubResource("LabelSettings_d315d")
+
+[node name="Node3D" parent="." instance=ExtResource("2_o456n")]
+transform = Transform3D(-0.131583, -0.150619, 0, 0.150619, -0.131583, 0, 0, 0, 0.2, -0.925344, 2.17676, 23.0277)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.589507, 2.02768, 24.4906)
+
+[node name="MenuSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_eyfj4")
+autoplay = true
+
+[connection signal="pressed" from="Menu/Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Menu/Buttons/Commands" to="." method="_on_commands_button_pressed"]
+[connection signal="pressed" from="Menu/Buttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Menu/Buttons/Retour" to="." method="_on_retour_pressed"]

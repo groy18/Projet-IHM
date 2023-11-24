@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://bex41f6sr8f0x"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m7l88"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvlxl"]
+albedo_color = Color(0, 0.447059, 0.717647, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3usi5"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g5q8s"]
+
+[node name="Saber" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("CylinderMesh_m7l88")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 2, 0, 0, 0, 0.2, 0, 2.85, 0)
+material_override = SubResource("StandardMaterial3D_rvlxl")
+mesh = SubResource("CylinderMesh_m7l88")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0573569, -3.28991e-08)
+light_energy = 10.65
+light_size = 1.5
+spot_range = 28.045
+spot_attenuation = 0.420448
+spot_angle = 11.38
+spot_angle_attenuation = 0.812252
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 1.4, 0, 0, 0, 0.1, -0.215417, 0, 0)
+material_override = SubResource("StandardMaterial3D_3usi5")
+mesh = SubResource("BoxMesh_g5q8s")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 1.4, 0, 0, 0, 0.1, 0.2, 0, 0)
+material_override = SubResource("StandardMaterial3D_3usi5")
+mesh = SubResource("BoxMesh_g5q8s")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0449038, 0, 0.0893513, 0, 1.4, 0, -0.0893513, 0, 0.0449038, -0.094403, 0, 0.202024)
+material_override = SubResource("StandardMaterial3D_3usi5")
+mesh = SubResource("BoxMesh_g5q8s")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0500076, 0, 0.0865982, 0, 1.4, 0, -0.0865982, 0, 0.0500076, 0.0997176, 0, -0.189295)
+material_override = SubResource("StandardMaterial3D_3usi5")
+mesh = SubResource("BoxMesh_g5q8s")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0414693, 0, 0.0909961, 0, 1.4, 0, -0.0909961, 0, -0.0414693, -0.1, 0, -0.187)
+material_override = SubResource("StandardMaterial3D_3usi5")
+mesh = SubResource("BoxMesh_g5q8s")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0544639, 0, 0.083867, 0, 1.4, 0, -0.083867, 0, -0.0544639, 0.116, 0, 0.182)
+material_override = SubResource("StandardMaterial3D_3usi5")
+mesh = SubResource("BoxMesh_g5q8s")
